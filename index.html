@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <main class="mt-8 w-4/5 mx-auto font-black">
+      <!-- Heading -->
+      <h1 class="text-4xl text-center">Memory Game</h1>
+
+      <!-- Main Grid -->
+      <div class="mt-6 p-2 bg-slate-300 rounded-2xl shadow-[]">
+        <!-- Info -->
+        <div>
+          <!-- Difficult & Reset -->
+          <div class="flex gap-2">
+            <div>
+              <span class="block rounded-2xl bg-white px-2 py-3"
+                >Cards Quantity: 10</span
+              >
+            </div>
+
+            <div>
+              <button class="block rounded-2xl bg-white px-2 py-3">
+                Reset Game <span>(space)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Counters -->
+          <div class="my-4 flex gap-2 justify-center">
+            <div>
+              <span class="block w-24 rounded-2xl bg-white px-2 py-3">
+                Moves: 0
+              </span>
+            </div>
+
+            <div class="text-center">
+              <span class="block w-24 rounded-2xl bg-white px-2 py-3"
+                >00:00</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div id="cards-grid">
+          <!-- <button
+            id="cardId"
+            class="relative shadow-xl transition-all duration-500 [transform-style:preserve-3d] select-none place-items-center grid rounded-2xl bg-white font-bold text-3xl size-20"
+          >
+            <div
+              id="front-card"
+              class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            >
+              🎃
+            </div>
+
+            <div
+              id="back-card"
+              class="absolute inset-0 grid place-items-center [backface-visibility:hidden]"
+            >
+              ?
+            </div>
+          </button> -->
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

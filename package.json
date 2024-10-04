@@ -1,0 +1,26 @@
+{
+  "name": "memory_game_m",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest --environment jsdom"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "happy-dom": "^15.7.4",
+    "vitest": "^2.1.2"
+  }
+}
