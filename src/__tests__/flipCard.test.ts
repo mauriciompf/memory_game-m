@@ -3,15 +3,23 @@ import { fireEvent } from "@testing-library/dom";
 import flipCard from "../ts/flipCard";
 
 describe("flipCard", () => {
-  beforeEach(() => {
-    document.body.innerHTML = '<button id="cardId"></button>';
-  });
+  for (let i = 0; i < 10; i++) {
+    beforeEach(() => {
+      document.body.innerHTML = "";
 
-  it("should add the class [transform:rotateY(180deg)] when clicked", () => {
-    flipCard();
+      for (let i = 0; i < 10; i++) {
+        const button = document.createElement("button");
+        button.id = `cardId-${i}`;
+        document.body.appendChild(button);
+      }
+    });
+  }
+
+  it("should add in cardId-0 the class [transform:rotateY(180deg)] when clicked", async () => {
+    await flipCard();
 
     const cardButton = window.document.getElementById(
-      "cardId"
+      "cardId-0"
     ) as HTMLButtonElement;
 
     if (!cardButton) return;

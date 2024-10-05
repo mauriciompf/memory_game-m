@@ -1,5 +1,5 @@
-import createCardGrid from "./createCardGrid";
+import createCardsGrid from "./createCardsGrid";
 import flipCard from "./flipCard";
 
-flipCard();
-createCardGrid();
+await createCardsGrid();
+await flipCard();
