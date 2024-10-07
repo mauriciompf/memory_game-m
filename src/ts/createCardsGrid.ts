@@ -1,4 +1,3 @@
-import flipCard from "./flipCard";
 import fetchEmojiData from "./utils/fetchEmojiData";
 import shuffle from "./utils/shuffle";
 
