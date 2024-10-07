@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { fireEvent } from "@testing-library/dom";
-import flipCard from "../ts/flipCard";
+import flipCards from "../ts/flipCards";
 
-describe("flipCard", () => {
+describe("flipCards", () => {
   for (let i = 0; i < 10; i++) {
     beforeEach(() => {
       document.body.innerHTML = "";
@@ -16,7 +16,7 @@ describe("flipCard", () => {
   }
 
   it("should add in cardId-0 the class [transform:rotateY(180deg)] when clicked", async () => {
-    await flipCard();
+    await flipCards();
 
     const cardButton = window.document.getElementById(
       "cardId-0"
