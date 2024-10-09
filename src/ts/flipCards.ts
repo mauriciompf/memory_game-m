@@ -23,7 +23,8 @@ const flipCards = async () => {
     if (!cardButton) return;
 
     cardButton.addEventListener("click", (event: any) => {
-      if (cardsMatched.includes(cardButton)) return; // Don't flip already matched cards
+      if (cardsMatched.includes(cardButton) || cardButtons.includes(cardButton))
+        return; // Don't flip already matched cards
 
       cardButton.classList.add("[transform:rotateY(180deg)]"); // Flip card button
 
