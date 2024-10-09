@@ -11,8 +11,19 @@ const createCardsGrid = async () => {
 
   // Create array of emojis
   const singleEmojis = [];
+  const usedIndices = new Set<number>(); // To track <unique> used indices
+
   for (let i = 0; i < 5; i++) {
-    const randomIndex = Math.floor(Math.random() * emojiData.length);
+    let randomIndex;
+
+    // Generating a random index until it finds one that hasn't been used yet.
+    // If it's been used, the loop runs again to find a new one.
+    do {
+      randomIndex = Math.floor(Math.random() * emojiData.length);
+    } while (usedIndices.has(randomIndex));
+
+    usedIndices.add(randomIndex); // Preventing use again
+
     const emojiCharacter = emojiData[randomIndex].char; // Get a random emoji
     singleEmojis.push(emojiCharacter);
   }
