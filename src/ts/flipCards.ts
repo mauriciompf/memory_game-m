@@ -1,6 +1,8 @@
 import createCardsGrid from "./createCardsGrid";
 import disableAllCardButtons from "./utils/disableAllCardButtons";
 import enableAllCardButtons from "./utils/enableAllCardButtons";
+import loadMatchedCards from "./utils/loadMatchedCards";
+import saveMatchedCards from "./utils/saveMatchedCards";
 
 const flipCards = async () => {
   await createCardsGrid();
@@ -16,10 +18,13 @@ const flipCards = async () => {
     cardButtons = []; // Prevent flip matched cards
   };
 
+  loadMatchedCards(cardsMatched);
+
   for (let i = 0; i < 10; i++) {
     const cardButton = document.getElementById(
       `cardId-${i}`
     ) as HTMLButtonElement;
+
     if (!cardButton) return;
 
     cardButton.addEventListener("click", (event: any) => {
@@ -48,6 +53,7 @@ const flipCards = async () => {
         } else {
           cardsMatched.push(previousCard, cardButton); // Store matched cards
 
+          saveMatchedCards(cardsMatched);
           resetArrays();
         }
       }
