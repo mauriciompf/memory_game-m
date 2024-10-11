@@ -6,31 +6,42 @@ const createCardsGrid = async () => {
   const cardsGrid = document.getElementById("cards-grid") as HTMLDivElement;
   if (!cardsGrid) return;
 
-  const emojiData = await fetchEmojiData();
-  if (!emojiData) return;
+  let shuffledEmojiCards = JSON.parse(
+    localStorage.getItem("shuffledEmojiCards") || "null"
+  );
 
-  // Create array of emojis
-  const singleEmojis = [];
-  const usedIndices = new Set<number>(); // To track <unique> used indices
+  if (!shuffledEmojiCards) {
+    const emojiData = await fetchEmojiData();
+    if (!emojiData) return;
 
-  for (let i = 0; i < 5; i++) {
-    let randomIndex;
+    // Create array of emojis
+    const singleEmojis = [];
+    const usedIndices = new Set<number>(); // To track <unique> used indices
 
-    // Generating a random index until it finds one that hasn't been used yet.
-    // If it's been used, the loop runs again to find a new one.
-    do {
-      randomIndex = Math.floor(Math.random() * emojiData.length);
-    } while (usedIndices.has(randomIndex));
+    for (let i = 0; i < 5; i++) {
+      let randomIndex;
 
-    usedIndices.add(randomIndex); // Preventing use again
+      // Generating a random index until it finds one that hasn't been used yet.
+      // If it's been used, the loop runs again to find a new one.
+      do {
+        randomIndex = Math.floor(Math.random() * emojiData.length);
+      } while (usedIndices.has(randomIndex));
 
-    const emojiCharacter = emojiData[randomIndex].char; // Get a random emoji
-    singleEmojis.push(emojiCharacter);
+      usedIndices.add(randomIndex); // Preventing use again
+
+      const emojiCharacter = emojiData[randomIndex].char; // Get a random emoji
+      singleEmojis.push(emojiCharacter);
+    }
+
+    // Duplicate every single emoji and shuffle
+    const fullEmojiCards = singleEmojis.flatMap((e) => [e, e]);
+    shuffledEmojiCards = shuffle(fullEmojiCards);
+
+    localStorage.setItem(
+      "shuffledEmojiCards",
+      JSON.stringify(shuffledEmojiCards)
+    );
   }
-
-  // Duplicate every single emoji and shuffle
-  const fullEmojiCards = singleEmojis.flatMap((e) => [e, e]);
-  const shuffledEmojiCards = shuffle(fullEmojiCards);
 
   for (let i = 0; i < shuffledEmojiCards.length; i++) {
     // Concatenating each button element to the string
