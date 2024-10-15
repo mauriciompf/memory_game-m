@@ -11,6 +11,10 @@ const fetchEmojiData = async (): Promise<Emoji[] | undefined> => {
       (emoji, index) => index < 134 && emoji.char !== "☺️" && emoji.char !== "☺"
     );
 
+    emojiData.forEach((e) => {
+      if (e.char === "⁇ ⁇ ⁇") e.char = "💪";
+    });
+
     return emojiData;
   } catch (error) {
     console.error("Error in fetching data: ", (error as Error).message);
