@@ -30,49 +30,55 @@ const flipCards = async () => {
     event: MouseEvent,
     cardButton: HTMLButtonElement
   ) => {
-    {
-      if (cardsMatched.includes(cardButton) || cardButtons.includes(cardButton))
-        return; // Don't flip already matched cards
+    if (JSON.parse(localStorage.getItem("matchedCards") || "").length === 0)
+      cardsMatched = [];
 
-      const currentEmoji = (event.currentTarget as HTMLElement).querySelector(
-        "div"
-      )!.innerText; // Get flipped emoji caractere
+    if (cardsMatched.includes(cardButton) || cardButtons.includes(cardButton))
+      return; // Don't flip already matched cards
 
-      flipCard(cardButton, currentEmoji);
+    const currentEmojiElement = (
+      event.currentTarget as HTMLElement
+    ).querySelector("div");
+    if (!currentEmojiElement) return;
 
-      // 2 flipped cards
-      if (flippedEmojis.length > 1) {
-        const previousEmoji = flippedEmojis[0];
-        const previousCard = cardButtons[0];
+    const currentEmoji = currentEmojiElement.innerText; // Get flipped emoji caractere
 
-        if (currentEmoji !== previousEmoji) {
-          // Unmatched cards
-          cardButtons.forEach((e) => {
-            setTimeout(() => {
-              e.classList.remove("[transform:rotateY(180deg)]");
-              resetArrays();
-            }, 1000);
-          });
-        } else {
-          // Matched cards
-          cardsMatched.push(previousCard, cardButton); // Store matched cards
+    flipCard(cardButton, currentEmoji);
 
-          saveMatchedCards(cardsMatched);
-          resetArrays();
-        }
+    // 2 flipped cards
+    if (flippedEmojis.length > 1) {
+      const previousEmoji = flippedEmojis[0];
+      const previousCard = cardButtons[0];
+
+      if (currentEmoji !== previousEmoji) {
+        // Unmatched cards
+        cardButtons.forEach((e) => {
+          setTimeout(() => {
+            e.classList.remove("[transform:rotateY(180deg)]");
+            resetArrays();
+          }, 1000);
+        });
+      } else {
+        // Matched cards
+        cardsMatched.push(previousCard, cardButton); // Store matched cards
+        previousCard.disabled = true;
+        cardButton.disabled = true;
+
+        saveMatchedCards(cardsMatched);
+        resetArrays();
       }
+    }
 
-      clickCount++; // Count every click
+    clickCount++; // Count every click
 
-      // Disabling card button for each par flipped and enable after a delay
-      if (clickCount === 2) {
-        disableAllCardButtons();
+    // Disabling card button for each par flipped and enable after a delay
+    if (clickCount === 2) {
+      disableAllCardButtons();
 
-        setTimeout(() => {
-          enableAllCardButtons();
-          clickCount = 0; // Reset count
-        }, 1000);
-      }
+      setTimeout(() => {
+        enableAllCardButtons(cardsMatched);
+        clickCount = 0; // Reset count
+      }, 1000);
     }
   };
 
