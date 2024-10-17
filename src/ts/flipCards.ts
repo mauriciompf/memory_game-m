@@ -3,6 +3,8 @@ import disableAllCardButtons from "./utils/disableAllCardButtons";
 import enableAllCardButtons from "./utils/enableAllCardButtons";
 import loadMatchedCards from "./utils/loadMatchedCards";
 import saveMatchedCards from "./utils/saveMatchedCards";
+import startTimer from "./utils/startTimer";
+import winBox from "./winBox";
 
 const flipCards = async () => {
   await createCardsGrid(); // Emojis were fully complete loaded
@@ -10,7 +12,8 @@ const flipCards = async () => {
   let clickCount = 0,
     flippedEmojis: string[] = [],
     cardButtons: HTMLButtonElement[] = [], // All card buttons
-    cardsMatched: HTMLButtonElement[] = [];
+    cardsMatched: HTMLButtonElement[] = [],
+    timerStarted = false;
 
   loadMatchedCards(cardsMatched); // Call matched cards local storage
 
@@ -35,6 +38,11 @@ const flipCards = async () => {
 
     if (cardsMatched.includes(cardButton) || cardButtons.includes(cardButton))
       return; // Don't flip already matched cards
+
+    if (!timerStarted) {
+      startTimer(); // Start the timer on the first card flip
+      timerStarted = true;
+    }
 
     const currentEmojiElement = (
       event.currentTarget as HTMLElement
@@ -63,9 +71,10 @@ const flipCards = async () => {
         cardsMatched.push(previousCard, cardButton); // Store matched cards
         previousCard.disabled = true;
         cardButton.disabled = true;
-
         saveMatchedCards(cardsMatched);
         resetArrays();
+
+        if (cardsMatched.length === 10) winBox();
       }
     }
 

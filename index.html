@@ -7,11 +7,18 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="src/style.css" />
     <title>Memory Game</title>
   </head>
-  <body>
-    <main class="mt-8 w-4/5 mx-auto font-black">
+  <body class="relative font-bold">
+    <main class="mt-8 w-4/5 mx-auto">
       <!-- Heading -->
       <h1 class="text-4xl text-center">Memory Game</h1>
 
@@ -34,9 +41,7 @@
           <div class="my-4 flex gap-2 justify-center">
             <div id="moves-counter" class="w-28 text-center"></div>
 
-            <div class="text-center w-28">
-              <span class="block rounded-2xl bg-white px-2 py-3">00:00</span>
-            </div>
+            <div id="timer" class="text-center w-28"></div>
           </div>
         </div>
 
