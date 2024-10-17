@@ -21,7 +21,7 @@ const movesCounter = async () => {
       `cardId-${i}`
     ) as HTMLButtonElement;
 
-    cardButton?.addEventListener("click", () => {
+    cardButton?.addEventListener("click", (event: MouseEvent) => {
       const currentCardId = `cardId-${i}`;
 
       if (lastClickedCardId !== currentCardId) {
@@ -29,7 +29,19 @@ const movesCounter = async () => {
           counter = 0;
         }
 
+        const matchedCards = JSON.parse(
+          localStorage.getItem("matchedCards") || "[]"
+        );
+
+        const isCardMatched = matchedCards.some(
+          (matchedCardId: string) =>
+            (event.currentTarget as HTMLButtonElement).id === matchedCardId
+        );
+
+        if (isCardMatched) return;
+
         counter++;
+
         localStorage.setItem("movesCounter", JSON.stringify(counter));
         counterText.textContent = `Moves: ${counter}`;
       }
