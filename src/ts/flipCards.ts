@@ -4,6 +4,7 @@ import enableAllCardButtons from "./utils/enableAllCardButtons";
 import loadMatchedCards from "./utils/loadMatchedCards";
 import saveMatchedCards from "./utils/saveMatchedCards";
 import startTimer from "./utils/startTimer";
+import { getTimerStarted, setTimerStarted } from "./utils/timerState";
 import winBox from "./winBox";
 
 const flipCards = async () => {
@@ -11,11 +12,19 @@ const flipCards = async () => {
 
   let clickCount = 0,
     flippedEmojis: string[] = [],
-    cardButtons: HTMLButtonElement[] = [], // All card buttons
-    cardsMatched: HTMLButtonElement[] = [],
-    timerStarted = false;
+    cardButtons: HTMLButtonElement[] = []; // All card buttons
 
-  loadMatchedCards(cardsMatched); // Call matched cards local storage
+  const cardsMatched = new Set<HTMLButtonElement>();
+
+  loadMatchedCards(Array.from(cardsMatched)); // Call matched cards local storage
+
+  const matchedCardsFromStorage = JSON.parse(
+    localStorage.getItem("matchedCards") || "[]"
+  );
+  matchedCardsFromStorage.forEach((cardId: string) => {
+    const cardButton = document.getElementById(cardId) as HTMLButtonElement;
+    if (cardButton) cardsMatched.add(cardButton);
+  });
 
   const resetArrays = () => {
     // Clear arrays for the next flip attempt
@@ -33,15 +42,13 @@ const flipCards = async () => {
     event: MouseEvent,
     cardButton: HTMLButtonElement
   ) => {
-    if (JSON.parse(localStorage.getItem("matchedCards") || "").length === 0)
-      cardsMatched = [];
+    if (cardsMatched.size === 10) winBox();
 
-    if (cardsMatched.includes(cardButton) || cardButtons.includes(cardButton))
-      return; // Don't flip already matched cards
+    if (cardsMatched.has(cardButton)) return; // Don't flip already matched cards
 
-    if (!timerStarted) {
+    if (!getTimerStarted()) {
       startTimer(); // Start the timer on the first card flip
-      timerStarted = true;
+      setTimerStarted(true); // Continue timer when reset
     }
 
     const currentEmojiElement = (
@@ -68,13 +75,19 @@ const flipCards = async () => {
         });
       } else {
         // Matched cards
-        cardsMatched.push(previousCard, cardButton); // Store matched cards
+        cardsMatched.add(previousCard);
+        cardsMatched.add(cardButton);
+        // cardsMatched.push(previousCard, cardButton); // Store matched cards
         previousCard.disabled = true;
         cardButton.disabled = true;
-        saveMatchedCards(cardsMatched);
+        saveMatchedCards(Array.from(cardsMatched));
         resetArrays();
 
-        if (cardsMatched.length === 10) winBox();
+        if (cardsMatched.size === 10) {
+          setTimeout(() => {
+            winBox();
+          }, 1500);
+        }
       }
     }
 
@@ -85,7 +98,7 @@ const flipCards = async () => {
       disableAllCardButtons();
 
       setTimeout(() => {
-        enableAllCardButtons(cardsMatched);
+        enableAllCardButtons(Array.from(cardsMatched));
         clickCount = 0; // Reset count
       }, 1000);
     }
