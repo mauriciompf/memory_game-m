@@ -7,7 +7,7 @@ const createCardsGrid = async () => {
   cardsGrid.innerHTML = ""; // Clear parent element
 
   let shuffledEmojiCards = JSON.parse(
-    localStorage.getItem("shuffledEmojiCards") || "null"
+    localStorage.getItem("shuffledEmojiCards") || ""
   );
 
   if (!shuffledEmojiCards) {
