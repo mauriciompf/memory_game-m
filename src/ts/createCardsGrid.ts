@@ -35,7 +35,7 @@ const createCardsGrid = async () => {
     const backCard = document.createElement("div");
     backCard.className =
       "absolute inset-0 grid place-items-center [backface-visibility:hidden]";
-    backCard.textContent = "?";
+    backCard.textContent = "?"; // Placeholder
 
     button.append(frontCard, backCard);
     cardsGrid.appendChild(button);
