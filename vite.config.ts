@@ -10,4 +10,5 @@ const vitestConfig: VitestUserConfigInterface = {
 
 export default defineConfig({
   test: vitestConfig.test,
+  base: "/memory_game_m/",
 });
