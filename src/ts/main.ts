@@ -7,5 +7,6 @@ import timer from "./timer";
 await createCardsGrid();
 await flipCards();
 await movesCounter();
+
 resetGame();
 timer();
