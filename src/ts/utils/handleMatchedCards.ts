@@ -1,6 +1,6 @@
 import { cardButtons, cardsMatched, flippedEmojis } from "../flipCards";
 import winGame from "../winGame";
-import { resetArrays } from "./resetArrays";
+import resetArrays from "./resetArrays";
 import saveMatchedCards from "./saveMatchedCards";
 import stopTimer from "./stopTimer";
 

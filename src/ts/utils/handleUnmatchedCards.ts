@@ -1,7 +1,7 @@
 import { cardButtons, cardsMatched, flippedEmojis } from "../flipCards";
 import disableAllCardButtons from "./disableAllCardButtons";
 import enableAllCardButtons from "./enableAllCardButtons";
-import { resetArrays } from "./resetArrays";
+import resetArrays from "./resetArrays";
 
 const handleUnmatchedCards = () => {
   cardButtons.forEach((e) => {

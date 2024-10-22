@@ -3,7 +3,7 @@ import disableAllCardButtons from "../utils/disableAllCardButtons";
 import enableAllCardButtons from "../utils/enableAllCardButtons";
 import generateUniqueEmojiSet from "../utils/generateUniqueEmojiSet";
 import { setLastClickedCardId } from "../utils/lastClickedCardIdState";
-import { resetArrays } from "../utils/resetArrays";
+import resetArrays from "../utils/resetArrays";
 import stopTimer from "../utils/stopTimer";
 import { setTimerStarted } from "../utils/timerState";
 
