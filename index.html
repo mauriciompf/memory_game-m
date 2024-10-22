@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Memory Game</title>
+    <script type="module" crossorigin src="/memory_game_m/assets/index-B81O0f10.js"></script>
+    <link rel="stylesheet" crossorigin href="/memory_game_m/assets/index-cWU0igFQ.css">
+  </head>
+  <body class="relative font-bold">
+    <main class="mt-8 w-4/5 mx-auto">
+      <!-- Heading -->
+      <h1 class="text-4xl text-center">Memory Game</h1>
+
+      <!-- Main Grid -->
+      <div class="mt-6 p-2 bg-slate-300 rounded-2xl shadow-[]">
+        <!-- Info -->
+        <div>
+          <!-- Difficult & Reset -->
+          <div class="flex gap-2">
+            <div>
+              <span class="block rounded-2xl bg-white px-2 py-3"
+                >Cards Quantity: 10</span
+              >
+            </div>
+
+            <div id="reset-game"></div>
+          </div>
+
+          <!-- Counters -->
+          <div class="my-4 flex gap-2 justify-center">
+            <div id="moves-counter" class="w-28 text-center"></div>
+
+            <div id="timer" class="text-center w-28"></div>
+          </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div
+          id="cards-grid"
+          class="grid grid-cols-3 gap-3 place-items-center"
+        ></div>
+      </div>
+    </main>
+
+    <noscript>
+      <!-- <meta http-equiv="Refresh" content="0;URL=ShowErrorPage.html" /> -->
+    </noscript>
+  </body>
+</html>
