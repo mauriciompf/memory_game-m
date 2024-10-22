@@ -14,7 +14,7 @@ const handleMatchedCards = (cardButton: HTMLButtonElement) => {
   saveMatchedCards(Array.from(cardsMatched));
   resetArrays(flippedEmojis, cardButtons); // Clear arrays for the next flip attempt
 
-  if (cardsMatched.size === 10) {
+  if (cardsMatched.size === 12) {
     stopTimer();
     setTimeout(winGame, 1500);
   }

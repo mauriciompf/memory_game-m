@@ -3,9 +3,12 @@ import resetConfirmationPopUp from "./handleClicks/resetConfirmationPopUp";
 const resetGame = () => {
   const resetDiv = document.getElementById("reset-game") as HTMLDivElement;
   const resetButton = document.createElement("button") as HTMLButtonElement;
+
   resetButton.className =
-    "block rounded-2xl ring-offset-2 hover:ring-2 focus:ring-2 bg-white px-2 py-3 transition-all";
-  resetButton.textContent = "Reset Game [space]";
+    "block rounded-2xl ring-offset-2 hover:ring-2 focus:ring-2 bg-white px-3 py-4 transition-all";
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  resetButton.textContent = `Reset game ${isMobile ? "" : "[space]"}`;
   resetButton.id = "reset-btn";
   resetDiv.appendChild(resetButton);
 
@@ -17,6 +20,7 @@ const resetGame = () => {
     const resetMessage = document.getElementById(
       "reset-message"
     ) as HTMLDivElement;
+
     if (winBox || resetMessage) return; // Prevent space bar action if is winner or reset
     if (e.key === " ") resetConfirmationPopUp();
   });

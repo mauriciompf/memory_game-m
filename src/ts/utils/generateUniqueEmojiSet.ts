@@ -9,7 +9,7 @@ const generateUniqueEmojiSet = async () => {
   const singleEmojis = [];
   const usedIndices = new Set<number>(); // Track <unique> used indices
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     let randomIndex;
 
     // Generating a random index until it finds one that hasn't been used yet.

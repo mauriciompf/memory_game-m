@@ -6,7 +6,7 @@ import { getTimerStarted, setTimerStarted } from "../utils/timerState";
 import winGame from "../winGame";
 
 const handleClickCard = (event: MouseEvent, cardButton: HTMLButtonElement) => {
-  if (cardsMatched.size === 10) winGame(); // Win condition
+  if (cardsMatched.size === 12) winGame(); // Win condition
   if (cardsMatched.size === 0) cardsMatched.clear(); // Allow flip the same card again after reset
   if (cardsMatched.has(cardButton) || cardButtons.includes(cardButton)) return; // Don't flip already matched cards;
 

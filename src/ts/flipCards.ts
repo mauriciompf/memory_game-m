@@ -21,7 +21,7 @@ const flipCards = async () => {
   });
 
   // Each card should be clickable
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 12; i++) {
     const cardButton = document.getElementById(
       `cardId-${i}`
     ) as HTMLButtonElement;

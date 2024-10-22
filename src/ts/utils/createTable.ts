@@ -13,7 +13,7 @@ export const createTable = (): HTMLTableElement => {
       id: 0,
       Hour: time,
       Moves: localStorage.getItem("movesCounter") || "0",
-      Cards_quantity: 10,
+      Cards_quantity: 12,
       Timer: `${localStorage.getItem("minutes") || "00"}:${
         localStorage.getItem("seconds") || "00"
       }`,

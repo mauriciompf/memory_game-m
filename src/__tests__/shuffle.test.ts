@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import shuffle from "../ts/utils/shuffle";
 
-const originalArray = [1, 2, 3, 4, 5];
+const originalArray = [1, 2, 3, 4, 5, 6];
 const shuffledArray = shuffle([...originalArray]);
 
 describe("shuffle", () => {
