@@ -8,7 +8,11 @@ const fetchEmojiData = async (): Promise<Emoji[] | undefined> => {
     );
 
     const emojiData = response.filter(
-      (emoji, index) => index < 134 && emoji.char !== "☺️" && emoji.char !== "☺"
+      (emoji, index) =>
+        index < 134 &&
+        emoji.char !== "☺️" &&
+        emoji.char !== "☺" &&
+        emoji.char !== "☠"
     );
 
     emojiData.forEach((e) => {
