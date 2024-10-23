@@ -6,7 +6,7 @@ export const createPlayAgainButton = (): HTMLButtonElement => {
   const playAgainButton = document.createElement("button") as HTMLButtonElement;
   playAgainButton.textContent = "Play again";
   playAgainButton.className =
-    "text-2xl bg-slate-300 transition-all hover:ring-2 focus:ring-2 px-4 py-2 rounded-2xl";
+    "text-2xl transition-all hover:ring-2 focus:ring-2 px-4 py-2 rounded-2xl bg-[#0080ff] text-white";
 
   playAgainButton.addEventListener("click", () => {
     const winBox = document.getElementById("win-box") as HTMLDivElement;

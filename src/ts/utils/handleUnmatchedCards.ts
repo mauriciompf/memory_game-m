@@ -1,4 +1,5 @@
-import { cardButtons, cardsMatched, flippedEmojis } from "../flipCards";
+import { cardButtons, flippedEmojis } from "../flipCards";
+import cardsMatched from "./cardMatched";
 import disableAllCardButtons from "./disableAllCardButtons";
 import enableAllCardButtons from "./enableAllCardButtons";
 import resetArrays from "./resetArrays";

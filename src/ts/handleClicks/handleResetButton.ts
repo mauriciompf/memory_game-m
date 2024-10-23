@@ -1,4 +1,5 @@
-import { cardButtons, cardsMatched, flippedEmojis } from "../flipCards";
+import { cardButtons, flippedEmojis } from "../flipCards";
+import cardsMatched from "../utils/cardMatched";
 import disableAllCardButtons from "../utils/disableAllCardButtons";
 import enableAllCardButtons from "../utils/enableAllCardButtons";
 import generateUniqueEmojiSet from "../utils/generateUniqueEmojiSet";
@@ -28,7 +29,12 @@ const handleResetButton = async () => {
 
     disableAllCardButtons();
 
-    cardButton?.classList.remove("[transform:rotateY(180deg)]"); // Flip all cards to back state
+    cardButton?.classList.remove(
+      "[transform:rotateY(180deg)]",
+      "ring-2",
+      "ring-[#FFDF00]",
+      "cursor-default"
+    ); // Flip all cards to back state
 
     // Enable cards to flip with new emojis array
     setTimeout(() => {

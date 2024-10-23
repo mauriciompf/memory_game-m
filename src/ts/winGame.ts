@@ -14,7 +14,7 @@ const winGame = () => {
 
   const resetButton = document.getElementById("reset-btn") as HTMLButtonElement;
   resetButton.disabled = true;
-  resetButton.classList.add("cursor-default");
+  // resetButton.classList.add("cursor-default");
 
   excludeElementFromBody(winBox).forEach((el) =>
     el.classList.add("blur-sm", "select-none")

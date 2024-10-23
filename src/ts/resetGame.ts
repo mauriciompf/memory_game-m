@@ -4,10 +4,10 @@ const resetGame = () => {
   const resetDiv = document.getElementById("reset-game") as HTMLDivElement;
   const resetButton = document.createElement("button") as HTMLButtonElement;
 
-  resetButton.className =
-    "block rounded-2xl ring-offset-2 hover:ring-2 focus:ring-2 bg-white px-3 py-4 transition-all";
-
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  resetButton.className =
+    "block rounded-2xl ring-offset-2 hover:ring-2 focus:ring-2 transition-all px-4 py-3 bg-[#0080ff] text-white";
   resetButton.textContent = `Reset game ${isMobile ? "" : "[space]"}`;
   resetButton.id = "reset-btn";
   resetDiv.appendChild(resetButton);

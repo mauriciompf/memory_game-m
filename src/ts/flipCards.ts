@@ -1,8 +1,7 @@
 import createCardsGrid from "./createCardsGrid";
 import handleClickCard from "./handleClicks/handleClickCard";
+import cardsMatched from "./utils/cardMatched";
 import loadMatchedCards from "./utils/loadMatchedCards";
-
-export const cardsMatched = new Set<HTMLButtonElement>();
 
 export let flippedEmojis: string[] = [],
   cardButtons: HTMLButtonElement[] = []; // All card buttons

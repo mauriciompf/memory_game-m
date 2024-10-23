@@ -1,4 +1,5 @@
-import { cardButtons, cardsMatched, flippedEmojis } from "../flipCards";
+import { cardButtons, flippedEmojis } from "../flipCards";
+import cardsMatched from "../utils/cardMatched";
 import handleFlipCard from "../utils/handleFlipCard";
 import handleFlippedCards from "../utils/handleFlippedCards";
 import startTimer from "../utils/startTimer";

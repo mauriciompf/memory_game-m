@@ -12,25 +12,25 @@ const resetConfirmationPopUp = () => {
 
   const resetMessageBox = document.createElement("div") as HTMLDivElement;
   resetMessageBox.id = "reset-message";
-  resetMessageBox.className = `absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 place-items-center mx-auto grid size-[10rem] p-2 z-50 bg-slate-300 rounded-2xl opacity-0 invisible transition-opacity duration-100 ease-in-out`;
+  resetMessageBox.className = `absolute top-1/2 left-1/2 -translate-x-1/2 hover: -translate-y-1/2 place-items-center mx-auto grid w-[14rem] h-[10rem] xl:w-[20rem] xl:h-[10rem] p-2 z-50  rounded-2xl opacity-0 invisible transition-opacity duration-100 ease-in-out bg-[#d8ebff] shadow-2xl text-2xl`;
 
   const warningLabel = document.createElement("span") as HTMLSpanElement;
   warningLabel.textContent = "Are you sure?";
-  warningLabel.className = "text-center text-2xl block";
+  warningLabel.className = "text-center text-3xl";
   resetMessageBox.appendChild(warningLabel);
 
-  const acceptResetBtn = createStyledButton("Yes");
+  const acceptResetBtn = createStyledButton("Yes✔️");
   acceptResetBtn.focus();
   acceptResetBtn.addEventListener("click", () => {
     removePopUp(resetMessageBox);
     handleResetButton(); // Action reset function
   });
 
-  const refuseResetBtn = createStyledButton("No");
+  const refuseResetBtn = createStyledButton("No❌");
   refuseResetBtn.addEventListener("click", () => removePopUp(resetMessageBox));
 
   const wrapButtons = document.createElement("div") as HTMLDivElement;
-  wrapButtons.className = "flex gap-2";
+  wrapButtons.className = "flex gap-4";
   wrapButtons.append(acceptResetBtn, refuseResetBtn);
 
   resetMessageBox.appendChild(wrapButtons);

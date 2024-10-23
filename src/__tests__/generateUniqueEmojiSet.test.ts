@@ -3,7 +3,7 @@ import generateUniqueEmojiSet from "../ts/utils/generateUniqueEmojiSet";
 
 describe("generateUniqueEmojiSet", async () => {
   const emojiSet = await generateUniqueEmojiSet();
-  const mockEmojiData = Array(10)
+  const mockEmojiData = Array(12)
     .fill(0)
     .map((_, i) => ({ char: `emoji${i}` }));
 
@@ -12,9 +12,9 @@ describe("generateUniqueEmojiSet", async () => {
     expect(emojiSet).toHaveLength(12);
   });
 
-  it("should contain exactly 5 unique duplicate once", () => {
+  it("should contain exactly 6 unique duplicate once", () => {
     const uniqueEmojis = new Set(emojiSet);
-    expect(uniqueEmojis.size).toBe(5);
+    expect(uniqueEmojis.size).toBe(6);
   });
 
   it("should shuffle the emoji array", () => {
